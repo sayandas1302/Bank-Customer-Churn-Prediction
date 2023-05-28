@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bank Customer Churn</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='./img/favicon.ico') }}">
+    <script src="{{url_for('static', filename='script.js')}}"></script>
+</head>
+<body background="{{ url_for('static', filename='img/bgImg.png') }}">
+    <div class="container">
+        <h1>Bank Customer Churn Predictor Application</h1>
+        <form id="myForm" action="/" method="post">
+            <h3>Fill with your Inputs</h3>
+            Select the options correctly and hit the submit button to view result.
+            <br><br>
+
+            <div class="box">
+                    <label class="labelHead">Geographical Region</label>
+                    <label>
+                        <input type="radio" name="Geography" value="France"> France
+                        <input type="radio" name="Geography" value="Spain"> Spain
+                        <input type="radio" name="Geography" value="Germany"> Germany
+                    </label>
+
+                    <br>
+
+                    <label class="labelHead">Gender</label>
+                    <label>
+                        <input type="radio" name="Gender" value="Male"> Male
+                        <input type="radio" name="Gender" value="Female"> Female
+                    </label>
+
+                    <br>
+
+                    <label class="labelHead">Has a Credit Card</label>
+                    <label>
+                        <input type="radio" name="HasCrCard" value=1> Yes
+                        <input type="radio" name="HasCrCard" value=0> No
+                    </label>
+
+                    <br>
+
+                    <label class="labelHead">Active Member</label>
+                    <label>
+                        <input type="radio" name="IsActiveMember" value=1> Yes
+                        <input type="radio" name="IsActiveMember" value=0> No
+                    </label>
+
+                    <br>
+
+                    <label class="labelHead">Made a complain</label>
+                    <label>
+                        <input type="radio" name="Complain" value=1> Yes
+                        <input type="radio" name="Complain" value=0> No
+                    </label>
+
+                    <br>
+
+                    <label class="labelHead">Card Type</label>
+                    <label>
+                        <input type="radio" name="Card Type" value="DIAMOND"> Diamond
+                        <input type="radio" name="Card Type" value="GOLD"> Gold
+                    </label>
+                    <label>
+                        <input type="radio" name="Card Type" value="SILVER"> Silver
+                        <input type="radio" name="Card Type" value="PLATINUM"> Platinum
+                    </label>
+            </div>
+                
+            <div class="box">
+                    <label class="labelHead">Credit Score</label>
+                    <input type="range" id="cscoreslider" name="CreditScore" min="100" max="1000" step="1" value=100 oninput="updateSliderValue('cscoreslider', 'cscoresliderValue')">
+                    <span class="slider-value" id="cscoresliderValue">100</span>
+
+                    <br>
+
+                    <label class="labelHead">Age</label>
+                    <input type="range" id="ageslider" name="Age" min="10" max="100" step="1" value=10 oninput="updateSliderValue('ageslider', 'agesliderValue')">
+                    <span class="slider-value" id="agesliderValue">10</span>
+
+                    <br>
+
+                    <label class="labelHead">Length of Tenureship</label>
+                    <input type="range" id="tenureslider" name="Tenure" min="0" max="10" step="1" value=0 oninput="updateSliderValue('tenureslider', 'tenuresliderValue')">
+                    <span class="slider-value" id="tenuresliderValue">0</span>
+
+                    <br>
+
+                    <label class="labelHead">Account Balance</label>
+                    <input type="range" id="balanceslider" name="Balance" min="0" max="500000" step="1" value=0 oninput="updateSliderValue('balanceslider', 'balancesliderValue')">
+                    <span class="slider-value" id="balancesliderValue">0</span>
+
+                    <br>
+
+                    <label class="labelHead">Number of Products Purchased with Credit Card</label>
+                    <input type="range" id="numprodslider" name="NumOfProducts" min="0" max="10" step="1" value=0 oninput="updateSliderValue('numprodslider', 'numprodsliderValue')">
+                    <span class="slider-value" id="numprodsliderValue">0</span>
+
+                    <br>
+
+                    <label class="labelHead">Estimated Salary</label>
+                    <input type="range" id="salaryslider" name="EstimatedSalary" min="10" max="500000" step="1" value=10 oninput="updateSliderValue('salaryslider', 'salarysliderValue')">
+                    <span class="slider-value" id="salarysliderValue">10</span>
+
+                    <br>
+
+                    <label class="labelHead">Satisfaction Score</label>
+                    <input type="range" id="satscoreslider" name="Satisfaction Score" min="1" max="5" step="1" value=1 oninput="updateSliderValue('satscoreslider', 'satscoresliderValue')">
+                    <span class="slider-value" id="satscoresliderValue">1</span>
+
+                    <br>
+
+                    <label class="labelHead">Credit Card Points Earned</label>
+                    <input type="range" id="crcardpointslider" name="Point Earned" min="0" max="1000" step="1" value=0 oninput="updateSliderValue('crcardpointslider', 'crcardpointsliderValue')">
+                    <span class="slider-value" id="crcardpointsliderValue">0</span>
+            </div>
+
+            <br>
+
+            <button type="submit" class="btn">Submit</button>
+        </form>
+
+        <br><br>
+
+        <div class="result">
+            <h3>Result</h3>
+            {% if message == "You have not inserted anything yet" %}
+                <p>{{ message }}</p>
+            {% else %}
+                {% if message == "This Customer will leave the bank :( " %}
+                    <p style="color: red;">{{ message }}</p>
+                {% else %}
+                    <p style="color: green;">{{ message }}</p>
+                {% endif %}
+                <p>Confidence: {{ conf }}%</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+body {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: sans-serif;
+}
+
+.container {
+    width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.box {
+    float: left;
+    width: 50%;
+    height: 602px;
+}
+
+.btn {
+    background-color: transparent;
+    border: 1px solid #246ac6;
+    color: #246ac6;
+    padding: 8px 16px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    align-self: center;
+    display: block;
+    margin: 0 auto;
+}
+
+.btn:hover {
+    background-color: #246ac6;
+    color: #fff;
+}
+
+.labelHead {
+    color: #246ac6;
+}
+
+.result {
+    background-color: white;
+    padding: 50px;
+    border-radius: 10px;
+    opacity: 0.7;
+}
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+}
+
+h3 {
+    color: #246ac6;
+}
+
+p {
+    font-weight: bold;
+    font-size: 15px;
+}
+form {
+    margin-top: 20px;
+    background-color: white;
+    opacity: 0.7;
+    padding: 50px;
+    border-radius: 10px;
+    font-weight: bold;
+    overflow: auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="range"] {
+    width: 100%;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
