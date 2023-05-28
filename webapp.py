@@ -57,12 +57,15 @@ app = Flask(__name__)
 def home():
     message = "You have not inserted anything yet"
     conf = 0
-    if request.method == "POST":
-        inputDf = pd.DataFrame([request.form.to_dict()])
-        col_to_float = num_col+['HasCrCard', 'IsActiveMember', 'Complain']
-        inputDf[col_to_float] = inputDf[col_to_float].astype('float')
-        inputDf = inputPreProc(inputDf)
-        conf, message= predOutput(inputDf)
+    try:
+        if request.method == "POST":
+            inputDf = pd.DataFrame([request.form.to_dict()])
+            col_to_float = num_col+['HasCrCard', 'IsActiveMember', 'Complain']
+            inputDf[col_to_float] = inputDf[col_to_float].astype('float')
+            inputDf = inputPreProc(inputDf)
+            conf, message= predOutput(inputDf)
+    except KeyError:
+        message = "Not all athe inputs are inserted"
     return render_template('webapphome.html', conf=round(100*conf, 2), message=message)
 
 app.run(debug=True)
