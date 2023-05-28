@@ -11,7 +11,8 @@ Bank Customer Churn Prediction - Analyzing data, building a logistic regression 
 7. some pickle files, storing important objects like model, encoder, scaler etc
 8. csv files in the "DataSets" folder
 9. 1 text file for python dependencies
- 
+10. 1 video file showing the demo of the web application
+
 ### Installing dependencies
 for installing the dependencies go throught the following steps
 1. download the entire folder in a new folder
