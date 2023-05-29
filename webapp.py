@@ -21,6 +21,7 @@ with open('./pickleFiles/threshold.pkl', 'rb') as file:
 
 # pre-processing the input data 
 def inputPreProc(df):
+    '''function that scale and encode the inputs inserted by the user to be used inside the model'''
     # scaling
     df[num_col] = scaler.transform(df[num_col])
 
@@ -39,6 +40,7 @@ def inputPreProc(df):
 
 # prediction of the output 
 def predOutput(df):
+    '''function that uses the pre-modeled logistic model to make prediction corresponding to user input'''
     df1 = df.copy()
     df.loc[:, "const"] = 1
     df2 = df["const"]
